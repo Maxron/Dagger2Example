@@ -4,8 +4,8 @@ public class Bill implements Man {
 
     private final Car car;
 
-    public Bill() {
-        this.car = new Ferrari();
+    public Bill(Car car) {
+        this.car = car;
     }
 
     @Override
