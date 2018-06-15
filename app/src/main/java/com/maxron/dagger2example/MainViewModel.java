@@ -6,17 +6,16 @@ import android.arch.lifecycle.ViewModel;
 
 import com.maxron.dagger2example.simpleDI.Bill;
 import com.maxron.dagger2example.simpleDI.Ferrari;
-import com.maxron.dagger2example.simpleDI.Man;
 
 public class MainViewModel extends ViewModel {
 
     private MutableLiveData<String> message = new MutableLiveData<>();
-    private final Man man;
+    private final Bill man;
 
     public MainViewModel() {
         Ferrari ferrari = new Ferrari();
         man = new Bill();
-        man.setCar(ferrari);
+        man.injectCar(ferrari);
         message.setValue(man.showCar());
     }
 
