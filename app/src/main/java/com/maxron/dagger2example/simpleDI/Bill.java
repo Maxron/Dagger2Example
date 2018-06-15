@@ -2,9 +2,13 @@ package com.maxron.dagger2example.simpleDI;
 
 public class Bill implements Man {
 
-    private final Car car;
+    private Car car;
 
-    public Bill(Car car) {
+    public Bill() {
+    }
+
+    @Override
+    public void setCar(Car car) {
         this.car = car;
     }
 

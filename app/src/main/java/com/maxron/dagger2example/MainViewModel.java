@@ -15,7 +15,8 @@ public class MainViewModel extends ViewModel {
 
     public MainViewModel() {
         Ferrari ferrari = new Ferrari();
-        man = new Bill(ferrari);
+        man = new Bill();
+        man.setCar(ferrari);
         message.setValue(man.showCar());
     }
 
