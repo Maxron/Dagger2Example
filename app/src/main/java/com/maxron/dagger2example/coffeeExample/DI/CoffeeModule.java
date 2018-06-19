@@ -1,7 +1,11 @@
 package com.maxron.dagger2example.coffeeExample.DI;
 
 import com.maxron.dagger2example.coffeeExample.ElectricHeater;
+import com.maxron.dagger2example.coffeeExample.HaierIceBox;
 import com.maxron.dagger2example.coffeeExample.Heater;
+import com.maxron.dagger2example.coffeeExample.Ice;
+import com.maxron.dagger2example.coffeeExample.IceBox;
+import com.maxron.dagger2example.coffeeExample.NajiIce;
 import com.maxron.dagger2example.coffeeExample.Pump;
 import com.maxron.dagger2example.coffeeExample.Thermosiphon;
 
@@ -19,5 +23,15 @@ public class CoffeeModule {
     @Provides
     Pump providePump() {
         return new Thermosiphon();
+    }
+
+    @Provides
+    Ice provideIce() {
+        return new NajiIce();
+    }
+
+    @Provides
+    IceBox provideIceBox(Ice ice) {
+        return new HaierIceBox(ice);
     }
 }

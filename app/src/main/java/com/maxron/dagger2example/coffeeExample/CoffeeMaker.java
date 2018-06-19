@@ -12,6 +12,7 @@ public class CoffeeMaker {
 
     @Inject Heater heater;
     @Inject Pump pump;
+    @Inject IceBox iceBox;
 
     public CoffeeMaker() {
         // Should build before use DaggerCoffeeComponent
@@ -32,6 +33,7 @@ public class CoffeeMaker {
         heater.on();
         pump.pump();
         Log.d(TAG, " [_]P coffee! [_]P ");
+        iceBox.addIce();
         heater.off();
     }
 }
