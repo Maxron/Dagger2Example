@@ -5,9 +5,12 @@ import com.maxron.dagger2example.coffeeExample.HaierIceBox;
 import com.maxron.dagger2example.coffeeExample.Heater;
 import com.maxron.dagger2example.coffeeExample.Ice;
 import com.maxron.dagger2example.coffeeExample.IceBox;
+import com.maxron.dagger2example.coffeeExample.Milk;
 import com.maxron.dagger2example.coffeeExample.NajiIce;
 import com.maxron.dagger2example.coffeeExample.Pump;
 import com.maxron.dagger2example.coffeeExample.Thermosiphon;
+
+import javax.inject.Named;
 
 import dagger.Module;
 import dagger.Provides;
@@ -33,5 +36,23 @@ public class CoffeeModule {
     @Provides
     IceBox provideIceBox(Ice ice) {
         return new HaierIceBox(ice);
+    }
+
+    @Provides
+    @Named("normal")
+    Milk provideNormalMilk() {
+        return new Milk();
+    }
+
+    @Provides
+    @Named("shuiguo")
+    Milk provideShuiGuoMilk(String type) {
+        return new Milk(type);
+    }
+
+    @Provides
+    public String provideString() {
+        // return new String();
+        return "caomei";
     }
 }
