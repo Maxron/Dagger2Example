@@ -8,8 +8,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.maxron.dagger2example.coffeeExample.DI.CoffeeComponent;
-import com.maxron.dagger2example.coffeeExample.DI.DaggerCoffeeComponent;
+import com.maxron.dagger2example.coffeeExample.DI.DaggerHeaterComponent;
+import com.maxron.dagger2example.coffeeExample.DI.HeaterComponent;
 import com.maxron.dagger2example.coffeeExample.Heater;
 
 import javax.inject.Inject;
@@ -29,15 +29,18 @@ public class MainViewModel extends AndroidViewModel {
 
     private void injectComponent() {
         Log.d(TAG, "injectComponent: ");
-        CoffeeComponent component = DaggerCoffeeComponent.create();
+
+        HeaterComponent component = DaggerHeaterComponent.builder()
+                .baseComponent(BaseApplication.getInstance().getBaseComponent())
+                .build();
         component.inject(this);
 
-        Log.d(TAG, "MainViewModel: heater1: " + heater1.toString());
-        Log.d(TAG, "MainViewModel: heater2: " + heater2.toString());
+        Log.d(TAG, "injectComponent: heater1: " + heater1.toString());
+        Log.d(TAG, "injectComponent: heater2: " + heater2.toString());
         /*
             Result:
-            MainViewModel: heater1: com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
-            MainViewModel: heater2: com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
+                heater1: com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
+                heater2: com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
          */
     }
 
