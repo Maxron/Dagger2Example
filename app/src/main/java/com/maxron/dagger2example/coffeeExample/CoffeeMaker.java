@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.maxron.dagger2example.coffeeExample.DI.CoffeeComponent;
 import com.maxron.dagger2example.coffeeExample.DI.DaggerCoffeeComponent;
+import com.maxron.dagger2example.coffeeExample.annotation.ShuiGuoMilk;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 public class CoffeeMaker {
     private static final String TAG = CoffeeMaker.class.getSimpleName();
@@ -14,7 +14,7 @@ public class CoffeeMaker {
     @Inject Heater heater;
     @Inject Pump pump;
     @Inject IceBox iceBox;
-    @Inject @Named("shuiguo") Milk milk;
+    @Inject @ShuiGuoMilk Milk milk;
 
     public CoffeeMaker() {
         // Should build before use DaggerCoffeeComponent

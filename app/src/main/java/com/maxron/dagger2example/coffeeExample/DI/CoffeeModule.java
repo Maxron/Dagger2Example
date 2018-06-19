@@ -9,8 +9,8 @@ import com.maxron.dagger2example.coffeeExample.Milk;
 import com.maxron.dagger2example.coffeeExample.NajiIce;
 import com.maxron.dagger2example.coffeeExample.Pump;
 import com.maxron.dagger2example.coffeeExample.Thermosiphon;
-
-import javax.inject.Named;
+import com.maxron.dagger2example.coffeeExample.annotation.NormalMilk;
+import com.maxron.dagger2example.coffeeExample.annotation.ShuiGuoMilk;
 
 import dagger.Module;
 import dagger.Provides;
@@ -39,13 +39,13 @@ public class CoffeeModule {
     }
 
     @Provides
-    @Named("normal")
+    @NormalMilk
     Milk provideNormalMilk() {
         return new Milk();
     }
 
     @Provides
-    @Named("shuiguo")
+    @ShuiGuoMilk
     Milk provideShuiGuoMilk(String type) {
         return new Milk(type);
     }
