@@ -12,12 +12,15 @@ import com.maxron.dagger2example.coffeeExample.Thermosiphon;
 import com.maxron.dagger2example.coffeeExample.annotation.NormalMilk;
 import com.maxron.dagger2example.coffeeExample.annotation.ShuiGuoMilk;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 
 @Module
 public class CoffeeModule {
 
+    @Singleton
     @Provides
     Heater provideHeater() {
         return new ElectricHeater();

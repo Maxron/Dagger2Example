@@ -45,7 +45,12 @@ public class CoffeeMaker {
         /*
           Result: It's different object
             brew: heater :com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
-            brew: heater2:com.maxron.dagger2example.coffeeExample.ElectricHeater@b11b70c
+            brew: heater :com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
+
+            Scope 是局部單例，效用範圍僅限於每次在 CoffeeComponent 中所取得的Heater 都是同一個物件；
+            若是在別的 Activity 中建立新的 CoffeeComponent，則 Activty1 所取得的 Heater 與 Activity2
+            所取得的 Heater 會是不同物件
          */
+
     }
 }
