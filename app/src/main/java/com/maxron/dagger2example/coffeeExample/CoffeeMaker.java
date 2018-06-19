@@ -12,6 +12,7 @@ public class CoffeeMaker {
     private static final String TAG = CoffeeMaker.class.getSimpleName();
 
     @Inject Heater heater;
+    @Inject Heater heater2;
     @Inject Pump pump;
     @Inject IceBox iceBox;
     @Inject @ShuiGuoMilk Milk milk;
@@ -38,5 +39,13 @@ public class CoffeeMaker {
         iceBox.addIce();
         milk.addMilk();
         heater.off();
+
+        Log.d(TAG, "brew: heater :" + heater.toString());
+        Log.d(TAG, "brew: heater2:" + heater2.toString());
+        /*
+          Result: It's different object
+            brew: heater :com.maxron.dagger2example.coffeeExample.ElectricHeater@d28e23f
+            brew: heater2:com.maxron.dagger2example.coffeeExample.ElectricHeater@b11b70c
+         */
     }
 }
