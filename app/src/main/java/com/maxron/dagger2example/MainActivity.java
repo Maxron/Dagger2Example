@@ -34,5 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 message.setText(s);
             }
         });
+
+        viewmodel.toFirstView();
     }
 }
