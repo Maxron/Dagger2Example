@@ -18,4 +18,5 @@ public class MainViewModel extends ViewModel {
     public LiveData<String> getMessage() {
         return message;
     }
+
 }
