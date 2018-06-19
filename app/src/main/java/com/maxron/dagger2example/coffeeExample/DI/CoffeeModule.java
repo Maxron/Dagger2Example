@@ -9,10 +9,9 @@ import com.maxron.dagger2example.coffeeExample.Milk;
 import com.maxron.dagger2example.coffeeExample.NajiIce;
 import com.maxron.dagger2example.coffeeExample.Pump;
 import com.maxron.dagger2example.coffeeExample.Thermosiphon;
+import com.maxron.dagger2example.coffeeExample.annotation.HeaterScope;
 import com.maxron.dagger2example.coffeeExample.annotation.NormalMilk;
 import com.maxron.dagger2example.coffeeExample.annotation.ShuiGuoMilk;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,7 +19,7 @@ import dagger.Provides;
 @Module
 public class CoffeeModule {
 
-    @Singleton
+    @HeaterScope
     @Provides
     Heater provideHeater() {
         return new ElectricHeater();
