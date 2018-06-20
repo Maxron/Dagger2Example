@@ -6,8 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 
 import javax.inject.Scope;
 
+import dagger.releasablereferences.CanReleaseReferences;
+
 @Scope
 @Documented
+@CanReleaseReferences
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ActivityScope {
 }
