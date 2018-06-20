@@ -5,7 +5,7 @@ import com.maxron.dagger2example.coffeeExample.B;
 
 import dagger.Component;
 
-@Component(modules = BModule.class)
+@Component(modules = BModule.class, dependencies = AComponent.class)
 public interface BComponent {
 
     void inject(MainViewModel viewModel);
