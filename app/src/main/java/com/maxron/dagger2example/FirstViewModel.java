@@ -16,13 +16,15 @@ public class FirstViewModel extends ViewModel {
     GameMode gameMode;
 
     public FirstViewModel() {
-        GameModeComponent component = DaggerGameModeComponent.create();
+        GameModeComponent component = DaggerGameModeComponent.builder().gameModeName("FirstPerson").build();
         component.inject(this);
 
         Log.d(TAG, "FirstViewModel: " + gameMode.getMode());
         /*
             Result:
-                D/FirstViewModel: FirstViewModel: Normal
+                D/GameModeModule: provideGameMode: FirstPerson
+                D/GameMode: GameMode:
+                D/FirstViewModel: FirstViewModel: FirstPerson
          */
     }
 }
