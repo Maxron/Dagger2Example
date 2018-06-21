@@ -7,13 +7,16 @@ import com.maxron.dagger2example.coffeeExample.DI.DaggerCoffeeComponent;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Provider;
+
+import dagger.Lazy;
 
 public class CoffeeMaker {
     private static final String TAG = CoffeeMaker.class.getSimpleName();
 
     @Inject Heater heater;
-    @Inject Pump pump;
-    @Inject IceBox iceBox;
+    @Inject Lazy<Pump> pump;
+    @Inject Provider<IceBox> iceBox;
     @Inject @Named("shuiguo") Milk milk;
 
     public CoffeeMaker() {
@@ -32,11 +35,13 @@ public class CoffeeMaker {
     }
 
     public void brew() {
-        heater.on();
-        pump.pump();
         Log.d(TAG, " [_]P coffee! [_]P ");
-        iceBox.addIce();
-        milk.addMilk();
-        heater.off();
+        /*
+            Result:
+                provideHeater:
+                provideString:
+                provideShuiGuoMilk:
+                [_]P coffee! [_]P
+         */
     }
 }
