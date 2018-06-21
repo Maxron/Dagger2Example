@@ -5,6 +5,8 @@ import android.util.Log;
 import com.maxron.dagger2example.coffeeExample.DI.CoffeeComponent;
 import com.maxron.dagger2example.coffeeExample.DI.DaggerCoffeeComponent;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
@@ -18,6 +20,14 @@ public class CoffeeMaker {
     @Inject Lazy<Pump> pump;
     @Inject Provider<IceBox> iceBox;
     @Inject @Named("shuiguo") Milk milk;
+    @Inject Optional<CoffeeCozy> coffeeCozy;
+    /*
+        Other types:
+            @Inject Optional<CoffeeCozy> coffeeCozy;
+            @Inject Optional<Provider<CoffeeCozy>> coffeeCozy;
+            @Inject Optional<Lazy<CoffeeCozy>> coffeeCozy;
+            @Inject Optional<Provider<Lazy<CoffeeCozy>>> coffeeCozy;
+    */
 
     public CoffeeMaker() {
         // Should build before use DaggerCoffeeComponent

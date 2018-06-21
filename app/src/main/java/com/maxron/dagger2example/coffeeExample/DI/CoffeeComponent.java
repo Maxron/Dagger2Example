@@ -4,7 +4,7 @@ import com.maxron.dagger2example.coffeeExample.CoffeeMaker;
 
 import dagger.Component;
 
-@Component(modules = CoffeeModule.class)
+@Component(modules ={CoffeeModule.class, CoffeeCozyModule.class})
 public interface CoffeeComponent {
 
     void inject(CoffeeMaker maker);
