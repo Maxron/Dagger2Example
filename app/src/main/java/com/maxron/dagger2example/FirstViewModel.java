@@ -1,30 +1,29 @@
 package com.maxron.dagger2example;
 
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
 import com.maxron.dagger2example.coffeeExample.DI.DaggerGameModeComponent;
 import com.maxron.dagger2example.coffeeExample.DI.GameModeComponent;
-import com.maxron.dagger2example.coffeeExample.GameMode;
+import com.maxron.dagger2example.coffeeExample.Heater;
 
 import javax.inject.Inject;
 
 public class FirstViewModel extends ViewModel {
 
     private static final String TAG = FirstViewModel.class.getSimpleName();
-    @Inject
-    GameMode gameMode;
+
+    @Inject Heater heater;
 
     public FirstViewModel() {
         GameModeComponent component = DaggerGameModeComponent.builder().gameModeName("FirstPerson").build();
         component.inject(this);
 
-        Log.d(TAG, "FirstViewModel: " + gameMode.getMode());
+        heater.on();
+        heater.off();
         /*
             Result:
-                D/GameModeModule: provideGameMode: FirstPerson
-                D/GameMode: GameMode:
-                D/FirstViewModel: FirstViewModel: FirstPerson
+                D/ElectricHeater: ~ ~ ~ heating ~ ~ ~
+                D/ElectricHeater: off
          */
     }
 }
