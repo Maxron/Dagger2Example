@@ -12,10 +12,7 @@ import com.maxron.dagger2example.coffeeExample.A;
 import com.maxron.dagger2example.coffeeExample.B;
 import com.maxron.dagger2example.coffeeExample.DI.AComponent;
 import com.maxron.dagger2example.coffeeExample.DI.AModule;
-import com.maxron.dagger2example.coffeeExample.DI.BComponent;
-import com.maxron.dagger2example.coffeeExample.DI.BModule;
 import com.maxron.dagger2example.coffeeExample.DI.DaggerAComponent;
-import com.maxron.dagger2example.coffeeExample.DI.DaggerBComponent;
 
 import javax.inject.Inject;
 
@@ -38,15 +35,11 @@ public class MainViewModel extends AndroidViewModel {
         AComponent aComponent = DaggerAComponent.builder()
                                                 .aModule(new AModule())
                                                 .build();
-        BComponent bComponent = DaggerBComponent.builder()
-                                                .bModule(new BModule())
-                                                .aComponent(aComponent)
-                                                .build();
-        bComponent.inject(this);
+        aComponent.bcomponent().inject(this);
         /*
             Result:
-                26700-26700/com.maxron.dagger2example D/B: create B:
-                26700-26700/com.maxron.dagger2example D/A: create A:
+                23574-23574/com.maxron.dagger2example D/B: create B:
+                23574-23574/com.maxron.dagger2example D/A: create A:
          */
     }
 

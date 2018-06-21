@@ -11,4 +11,6 @@ public interface AComponent {
     void inject(FirstViewModel viewModel);
 
     A provideA();
+
+    BComponent bcomponent();
 }
