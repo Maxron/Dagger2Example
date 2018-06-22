@@ -4,19 +4,22 @@ import com.maxron.dagger2example.coffeeExample.Player;
 
 import dagger.Module;
 import dagger.Provides;
-import dagger.multibindings.IntoSet;
+import dagger.multibindings.IntoMap;
+import dagger.multibindings.StringKey;
 
 @Module
 public class GameModule {
 
     @Provides
-    @IntoSet
+    @IntoMap
+    @StringKey(value = "1") // Map<String,Player> , also provide @IntKey, @ClassKey, @ActivityKey
     Player providePlayer1() {
         return new Player("1");
     }
 
     @Provides
-    @IntoSet
+    @IntoMap
+    @StringKey(value = "2")
     Player providePlayer2() {
         return new Player("2");
     }
