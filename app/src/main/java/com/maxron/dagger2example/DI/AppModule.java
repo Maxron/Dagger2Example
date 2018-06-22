@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(subcomponents = MainActivityComponent.class)
 public class AppModule {
 
     @Singleton
