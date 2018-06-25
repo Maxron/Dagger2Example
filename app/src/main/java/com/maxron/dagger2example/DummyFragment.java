@@ -3,10 +3,13 @@ package com.maxron.dagger2example;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,9 +24,12 @@ import dagger.android.support.AndroidSupportInjection;
  */
 public class DummyFragment extends Fragment {
 
+    private static final String TAG = DummyFragment.class.getSimpleName();
     @BindView(R.id.display)
     TextView display;
     Unbinder unbinder;
+
+    @Inject Car mCar;
 
     public DummyFragment() {
         // Required empty public constructor
@@ -45,6 +51,8 @@ public class DummyFragment extends Fragment {
         AndroidSupportInjection.inject(this);
         View view = inflater.inflate(R.layout.fragment_dummy, container, false);
         unbinder = ButterKnife.bind(this, view);
+        Log.d(TAG, "onCreateView: Car brand: " + mCar.getBrand());
+        display.setText(mCar.getBrand());
         return view;
     }
 

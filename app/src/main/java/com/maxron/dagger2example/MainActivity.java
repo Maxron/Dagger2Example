@@ -2,6 +2,7 @@ package com.maxron.dagger2example;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -33,6 +34,18 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         ButterKnife.bind(this);
 
         computer.show();
+        addFragment();
+    }
+
+    private void addFragment() {
+        DummyFragment fragment =
+                (DummyFragment) getSupportFragmentManager().findFragmentById(R.id.layout_content);
+        if (fragment == null) {
+            fragment = DummyFragment.newInstance();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(R.id.layout_content, fragment);
+            transaction.commit();
+        }
     }
 
     @Override
