@@ -11,6 +11,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dagger.android.support.AndroidSupportInjection;
 
 
 /**
@@ -41,7 +42,7 @@ public class DummyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        AndroidSupportInjection.inject(this);
         View view = inflater.inflate(R.layout.fragment_dummy, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;

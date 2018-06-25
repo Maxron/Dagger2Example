@@ -5,7 +5,7 @@ import com.maxron.dagger2example.MainActivity;
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
 
-@Subcomponent(modules = MainActivityModule.class)
+@Subcomponent(modules = {MainActivityModule.class, DummyFragmentBindingModule.class})
 public interface MainActivityComponent extends AndroidInjector<MainActivity>{
 
     @Subcomponent.Builder
