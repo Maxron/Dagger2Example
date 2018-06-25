@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dagger.android.support.AndroidSupportInjection;
+import dagger.android.support.DaggerFragment;
 
 
 /**
@@ -22,7 +22,7 @@ import dagger.android.support.AndroidSupportInjection;
  * Use the {@link DummyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DummyFragment extends Fragment {
+public class DummyFragment extends DaggerFragment {
 
     private static final String TAG = DummyFragment.class.getSimpleName();
     @BindView(R.id.display)
@@ -48,7 +48,6 @@ public class DummyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        AndroidSupportInjection.inject(this);
         View view = inflater.inflate(R.layout.fragment_dummy, container, false);
         unbinder = ButterKnife.bind(this, view);
         Log.d(TAG, "onCreateView: Car brand: " + mCar.getBrand());
